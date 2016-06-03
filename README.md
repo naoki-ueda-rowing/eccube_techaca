@@ -12,20 +12,23 @@
 
 ## 手順
 ### VirtualBoxが使えるようにBIOSの設定変更
+IntelVTが無効になっていると、仮想マシンに64bit OSをインストールできないので  
 >PCを再起動してESCを押し、BIOS Setupに入る  
 VTを有効化  
 設定を保存して再起動
+
+具体的な方法はPCのメーカーにより異なるので各自で調べる  
 
 ### Vagrant, VirtualBoxなどをインストール
 Vagrant : http://www.vagrantup.com/downloads.html  
 VirtualBox : https://www.virtualbox.org/wiki/Downloads  
 Git for Windows : https://git-for-windows.github.io/  
-Tera Term : https://osdn.jp/projects/ttssh2/
 
-### Vagrant起動
-GitHubで [arisugi/eccube_techaca](https://github.com/arisugi/eccube_techaca) をfork
+### 仮想マシンを起動
+GitHubで [arisugi/eccube_techaca](https://github.com/arisugi/eccube_techaca) をfork  
   
-Git Bashを開き
+Git Bashを開き、~/Documents 以下に eccube_techaca をclone  
+eccube_techaca で仮想マシンを起動  
 ```
 $ cd ~/Documents
 $ git clone https://github.com/[GitHubのユーザー名]/eccube_techaca.git
@@ -33,25 +36,24 @@ $ cd eccube_techaca
 $ vagrant up
 ```
 
-※ /vagrant => C:/Users/[PCのユーザー名]/Documents/eccube_techaca/ でエラーが発生した場合
+※ /vagrant => C:/Users/[PCのユーザー名]/Documents/eccube_techaca/ でエラーが発生した場合、  
 ```
 $ vagrant plugin uninstall vagrant-vbguest
 $ vagrant plugin install --plugin-source https://rubygems.org/ --plugin-prerelease vagrant-vbguest
 ```
 
-※ それでも同様のエラーが発生する場合、Tera Termを開き、
->ホスト : 192.168.55.10  
-ユーザー名 : vagrant  
-パスフレーズ : vagrant  
+※ それでも同様のエラーが発生する場合、  
+仮想マシンにSSH接続し、kernelをアップデート  
+下記のパッケージをインストール
+その後、仮想マシンを再起動
+```
+$ ssh vagrant@192.168.55.10
+パスワードの入力を求められるので、vagrant と入力
 
-で接続し、
-```
-$ sudo yum -y update kernel
-$ sudo yum -y install kernel-devel kernel-headers dkms gcc gcc-c++
-```
+[vagrant@localhost ~] $ sudo yum -y update kernel
+[vagrant@localhost ~] $ sudo yum -y install kernel-devel kernel-headers dkms gcc gcc-c++
+[vagrant@localhost ~] $ exit
 
-Git Bashで
-```
 $ vagrant reload
 ```
 
@@ -60,15 +62,15 @@ $ vagrant reload
 ブラウザで [192.168.55.10/eccube-2.13.5-pgsql/html/install](192.168.55.10/eccube-2.13.5-pgsql/html/install) にアクセス
 
 ECサイトの設定
->店名 : 任意  
-メールアドレス : 任意  
+>店名 : (任意)  
+メールアドレス : (任意)  
 ログインID : admin  
 パスワード : password  
 
 管理機能の設定
->ディレクトリ : admin
+>ディレクトリ : admin  
 
-WEBサーバーの設定
+WEBサーバーの設定  
 >URL(通常) : デフォルト  
 URL(セキュア) : デフォルト  
 
@@ -77,3 +79,8 @@ URL(セキュア) : デフォルト
 DB名 : eccube_2135_db  
 DBユーザ : eccube_db_user  
 DBパスワード : password  
+
+
+## 参考
+[VirtualBoxで64bit版OSを使うためにIntel VTを有効化する](http://d.hatena.ne.jp/torazuka/20100620/p1)  
+[Vagrantのmountエラーを解決しようとしたらvboxのリビルドがこける](http://qiita.com/wakaba260/items/b5c87b7815b710f303a0)
