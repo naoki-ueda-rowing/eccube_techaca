@@ -44,7 +44,7 @@ $ vagrant plugin install --plugin-source https://rubygems.org/ --plugin-prerelea
 
 ※ それでも同様のエラーが発生する場合、  
 仮想マシンにSSH接続し、kernelをアップデート  
-下記のパッケージをインストール
+下記のパッケージをインストール  
 その後、仮想マシンを再起動
 ```
 $ ssh vagrant@192.168.55.10
