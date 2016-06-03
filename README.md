@@ -1,6 +1,4 @@
-# eccube_techaca
-EC-CUBE2.13.5の環境構築
-
+# EC-CUBE2.13.5の環境構築手順
 
 ## 以下の環境を想定
 * Windows 7 Pro
