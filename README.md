@@ -39,8 +39,7 @@ $ vagrant plugin uninstall vagrant-vbguest
 $ vagrant plugin install --plugin-source https://rubygems.org/ --plugin-prerelease vagrant-vbguest
 ```
 
-※ それでも同様のエラーが発生する場合
-Tera Termを開き、
+※ それでも同様のエラーが発生する場合、Tera Termを開き、
 >ホスト : 192.168.55.10  
 ユーザー名 : vagrant  
 パスフレーズ : vagrant  
