@@ -7,21 +7,21 @@ EC-CUBE2.13.5の環境構築
 * vagrant 1.6.1
 * Virtual Box 4.3.10
 
-※ Virtual Boxを4.3.12にアップデートすると環境変数に
-**C:\Program Files\Oracle\VirtualBox**
+※ Virtual Boxを4.3.12にアップデートすると環境変数に  
+**C:\Program Files\Oracle\VirtualBox**  
 を追加する必要がある
 
 
 ## 手順
 ### VirtualBoxが使えるようにBIOSの設定変更
->PCを再起動してESCを押し、BIOS Setupに入る
-VTを有効化
+>PCを再起動してESCを押し、BIOS Setupに入る  
+VTを有効化  
 設定を保存して再起動
 
 ### Vagrant, VirtualBoxなどをインストール
-Vagrant : http://www.vagrantup.com/downloads.html
-VirtualBox : https://www.virtualbox.org/wiki/Downloads
-Git for Windows : https://git-for-windows.github.io/
+Vagrant : http://www.vagrantup.com/downloads.html  
+VirtualBox : https://www.virtualbox.org/wiki/Downloads  
+Git for Windows : https://git-for-windows.github.io/  
 Tera Term : https://osdn.jp/projects/ttssh2/
 
 ### Vagrant起動
@@ -43,9 +43,9 @@ $ vagrant plugin install --plugin-source https://rubygems.org/ --plugin-prerelea
 
 ※ それでも同様のエラーが発生する場合
 Tera Termを開き、
->ホスト : 192.168.55.10
-ユーザー名 : vagrant
-パスフレーズ : vagrant
+>ホスト : 192.168.55.10  
+ユーザー名 : vagrant  
+パスフレーズ : vagrant  
 
 で接続し、
 ```
@@ -63,20 +63,20 @@ $ vagrant reload
 ブラウザで [192.168.55.10/eccube-2.13.5-pgsql/html/install](192.168.55.10/eccube-2.13.5-pgsql/html/install) にアクセス
 
 ECサイトの設定
->店名 : 任意
-メールアドレス : 任意
-ログインID : admin
-パスワード : password
+>店名 : 任意  
+メールアドレス : 任意  
+ログインID : admin  
+パスワード : password  
 
 管理機能の設定
 >ディレクトリ : admin
 
 WEBサーバーの設定
->URL(通常) : デフォルト
-URL(セキュア) : デフォルト
+>URL(通常) : デフォルト  
+URL(セキュア) : デフォルト  
 
 データベースの設定
->DBの種類 : PostgreSQL
-DB名 : eccube_2135_db
-DBユーザ : eccube_db_user
-DBパスワード : password
+>DBの種類 : PostgreSQL  
+DB名 : eccube_2135_db  
+DBユーザ : eccube_db_user  
+DBパスワード : password  
