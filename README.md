@@ -6,7 +6,7 @@
 * Virtual Box 4.3.10
 
 ※ Virtual Boxを4.3.12にアップデートすると環境変数に  
-**C:\Program Files\Oracle\VirtualBox**  
+**C:/Program Files/Oracle/VirtualBox**  
 を追加する必要がある
 
 
