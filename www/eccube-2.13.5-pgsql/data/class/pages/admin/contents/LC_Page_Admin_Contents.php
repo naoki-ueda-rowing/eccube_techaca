@@ -24,7 +24,7 @@
 require_once CLASS_EX_REALDIR . 'page_extends/admin/LC_Page_Admin_Ex.php';
 
 /**
- * コンテンツ管理 のページクラス.
+ * コンテンツ管理 のページクラス新.
  *
  * @package Page
  * @author LOCKON CO.,LTD.
