@@ -135,6 +135,7 @@ class LC_Page_FrontParts_Bloc_News extends LC_Page_FrontParts_Bloc_Ex
             }
         }
 
+
         return $arrNewsList;
     }
 
@@ -175,6 +176,7 @@ class LC_Page_FrontParts_Bloc_News extends LC_Page_FrontParts_Bloc_Ex
 
         return $json;
     }
+
 
     /**
      * エラーメッセージを整形し, JSON 形式で返す.

@@ -112,6 +112,8 @@ class LC_Page_Admin_Contents extends LC_Page_Admin_Ex
             case 'pre_edit':
                 $news = $objNews->getNews($news_id);
                 list($news['year'],$news['month'],$news['day']) = $this->splitNewsDate($news['cast_news_date']);
+                list($news['start_year'],$news['start_month'],$news['start_day']) = $this->splitNewsDate($news['cast_news_start_date']);
+                list($news['end_year'],$news['end_month'],$news['end_day']) = $this->splitNewsDate($news['cast_news_end_date']);
                 $objFormParam->setParam($news);
 
                 // POSTデータを引き継ぐ
@@ -212,6 +214,10 @@ class LC_Page_Admin_Contents extends LC_Page_Admin_Ex
         $sqlval['link_method'] = $this->checkLinkMethod($sqlval['link_method']);
         $sqlval['news_date'] = $this->getRegistDate($sqlval);
         unset($sqlval['year'], $sqlval['month'], $sqlval['day']);
+        $sqlval['news_start_date'] = $this->getStartDate($sqlval);
+        unset($sqlval['start_year'], $sqlval['start_month'], $sqlval['start_day']);
+        $sqlval['news_end_date'] = $this->getEndDate($sqlval);
+        unset($sqlval['end_year'], $sqlval['end_month'], $sqlval['end_day']);
 
         return $objNews->saveNews($sqlval);
     }
@@ -226,6 +232,30 @@ class LC_Page_Admin_Contents extends LC_Page_Admin_Ex
         $registDate = $arrPost['year'] .'/'. $arrPost['month'] .'/'. $arrPost['day'];
 
         return $registDate;
+    }
+
+    /**
+     * 表示開始日を返す。
+     * @param  Array  $arrPost POSTのグローバル変数
+     * @return string 登録日を示す文字列
+     */
+    public function getStartDate($arrPost)
+    {
+        $startDate = $arrPost['start_year'] .'/'. $arrPost['start_month'] .'/'. $arrPost['start_day'];
+
+        return $startDate;
+    }
+
+    /**
+     * 表示終了日を返す。
+     * @param  Array  $arrPost POSTのグローバル変数
+     * @return string 登録日を示す文字列
+     */
+    public function getEndDate($arrPost)
+    {
+        $endDate = $arrPost['end_year'] .'/'. $arrPost['end_month'] .'/'. $arrPost['end_day'];
+
+        return $endDate;
     }
 
     /**

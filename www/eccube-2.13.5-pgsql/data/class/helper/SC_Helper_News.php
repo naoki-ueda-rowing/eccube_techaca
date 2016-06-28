@@ -40,7 +40,9 @@ class SC_Helper_News
     public static function getNews($news_id, $has_deleted = false)
     {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
-        $col = '*, cast(news_date as date) as cast_news_date';
+        $col = '*, cast(news_date as date) as cast_news_date,
+                  cast(news_start_date as date) as cast_news_start_date,
+                 cast(news_end_date as date) as cast_news_end_date';
         $where = 'news_id = ?';
         if (!$has_deleted) {
             $where .= ' AND del_flg = 0';
@@ -61,7 +63,9 @@ class SC_Helper_News
     public function getList($dispNumber = 0, $pageNumber = 0, $has_deleted = false)
     {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
-        $col = '*, cast(news_date as date) as cast_news_date';
+        $col = '*, cast(news_date as date) as cast_news_date,
+                 cast(news_start_date as date) as cast_news_start_date,
+                 cast(news_end_date as date) as cast_news_end_date';
         $where = '';
         if (!$has_deleted) {
             $where .= 'del_flg = 0';
