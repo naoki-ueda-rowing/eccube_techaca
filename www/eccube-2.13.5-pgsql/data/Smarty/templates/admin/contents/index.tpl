@@ -56,6 +56,42 @@
                 </td>
             </tr>
             <tr>
+                <th>表示開始日</th>
+                <td>
+                    <!--{if $arrErr.start_year || $arrErr.start_month || $arrErr.start_day}--><span class="attention"><!--{$arrErr.start_year}--><!--{$arrErr.start_month}--><!--{$arrErr.start_day}--></span><!--{/if}-->
+                    <select name="start_year" <!--{if $arrErr.start_year || $arrErr.start_month || $arrErr.start_day }-->style="background-color:<!--{$smarty.const.ERR_COLOR|h}-->"<!--{/if}-->>
+                    <option value="" selected="selected">----</option>
+                    <!--{html_options options=$arrYear selected=$arrForm.start_year}-->
+                    </select>年
+                    <select name="start_month" <!--{if $arrErr.start_year || $arrErr.start_month || $arrErr.start_day}-->style="background-color:<!--{$smarty.const.ERR_COLOR|h}-->"<!--{/if}-->>
+                    <option value="" selected="selected">--</option>
+                    <!--{html_options options=$arrMonth selected=$arrForm.start_month}-->
+                    </select>月
+                    <select name="start_day" <!--{if $arrErr.start_year || $arrErr.start_month || $arrErr.start_day}-->style="background-color:<!--{$smarty.const.ERR_COLOR|h}-->"<!--{/if}-->>
+                    <option value="" selected="selected">--</option>
+                    <!--{html_options options=$arrDay selected=$arrForm.start_day}-->
+                    </select>日
+                </td>
+            </tr>
+            <tr>
+                <th>表示終了日</th>
+                <td>
+                    <!--{if $arrErr.end_year || $arrErr.end_month || $arrErr.end_day}--><span class="attention"><!--{$arrErr.end_year}--><!--{$arrErr.end_month}--><!--{$arrErr.end_day}--></span><!--{/if}-->
+                    <select name="end_year" <!--{if $arrErr.end_year || $arrErr.end_month || $arrErr.end_day }-->style="background-color:<!--{$smarty.const.ERR_COLOR|h}-->"<!--{/if}-->>
+                    <option value="" selected="selected">----</option>
+                    <!--{html_options options=$arrYear selected=$arrForm.end_year}-->
+                    </select>年
+                    <select name="end_month" <!--{if $arrErr.end_year || $arrErr.end_month || $arrErr.end_day}-->style="background-color:<!--{$smarty.const.ERR_COLOR|h}-->"<!--{/if}-->>
+                    <option value="" selected="selected">--</option>
+                    <!--{html_options options=$arrMonth selected=$arrForm.end_month}-->
+                    </select>月
+                    <select name="end_day" <!--{if $arrErr.end_year || $arrErr.end_month || $arrErr.end_day}-->style="background-color:<!--{$smarty.const.ERR_COLOR|h}-->"<!--{/if}-->>
+                    <option value="" selected="selected">--</option>
+                    <!--{html_options options=$arrDay selected=$arrForm.end_day}-->
+                    </select>日
+                </td>
+            </tr>
+            <tr>
                 <th>URL</th>
                 <td>
                     <span class="attention"><!--{$arrErr.news_url}--></span>
@@ -101,8 +137,10 @@
         <input type="hidden" name="rank" value="" />
         <table class="list">
             <col width="5%" />
-            <col width="15%" />
-            <col width="45%" />
+            <col width="10%" />
+            <col width="30%" />
+            <col width="10%" />
+            <col width="10%" />
             <col width="5%" />
             <col width="5%" />
             <col width="25%" />
@@ -110,6 +148,8 @@
                 <th>順位</th>
                 <th>日付</th>
                 <th>タイトル</th>
+                <th>表示開始日</th>
+                <th>表示終了日</th>
                 <th class="edit">編集</th>
                 <th class="delete">削除</th>
                 <th>移動</th>
@@ -126,6 +166,8 @@
                     <!--{else}--><!--{$arrNews[data].news_title|h|nl2br}-->
                     <!--{/if}-->
                 </td>
+                <td class="center"><!--{$arrNews[data].cast_news_start_date|date_format:"%Y/%m/%d"|default:"指定なし"}--></td>
+                <td class="center"><!--{$arrNews[data].cast_news_end_date|date_format:"%Y/%m/%d"|default:"指定なし"}--></td>
                 <td>
                     <!--{if $arrNews[data].news_id != $tpl_news_id}-->
                     <a href="#" onclick="eccube.fnFormModeSubmit('move','pre_edit','news_id','<!--{$arrNews[data].news_id|h}-->'); return false;">編集</a>

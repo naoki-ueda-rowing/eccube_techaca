@@ -169,6 +169,8 @@ class LC_Page_Admin_Contents extends LC_Page_Admin_Ex
         $objErr = new SC_CheckError_Ex($objFormParam->getHashArray());
         $objErr->arrErr = $objFormParam->checkError();
         $objErr->doFunc(array('日付', 'year', 'month', 'day'), array('CHECK_DATE'));
+        $objErr->doFunc(array('表示開始日', 'start_year', 'start_month', 'start_day'), array('CHECK_DATE'));
+        $objErr->doFunc(array('表示終了日', 'end_year', 'end_month', 'end_day'), array('CHECK_DATE'));
 
         return $objErr->arrErr;
     }
@@ -183,6 +185,12 @@ class LC_Page_Admin_Contents extends LC_Page_Admin_Ex
         $objFormParam->addParam('日付(年)', 'year', INT_LEN, 'n', array('EXIST_CHECK', 'NUM_CHECK', 'MAX_LENGTH_CHECK'));
         $objFormParam->addParam('日付(月)', 'month', INT_LEN, 'n', array('EXIST_CHECK', 'NUM_CHECK', 'MAX_LENGTH_CHECK'));
         $objFormParam->addParam('日付(日)', 'day', INT_LEN, 'n', array('EXIST_CHECK', 'NUM_CHECK', 'MAX_LENGTH_CHECK'));
+        $objFormParam->addParam('表示開始日(年)', 'start_year', INT_LEN, 'n', array('EXIST_CHECK','NUM_CHECK', 'MAX_LENGTH_CHECK'));
+        $objFormParam->addParam('表示開始日(月)', 'start_month', INT_LEN, 'n', array('EXIST_CHECK','NUM_CHECK', 'MAX_LENGTH_CHECK'));
+        $objFormParam->addParam('表示開始日(日)', 'start_day', INT_LEN, 'n', array('EXIST_CHECK','NUM_CHECK', 'MAX_LENGTH_CHECK'));
+        $objFormParam->addParam('表示終了日(年)', 'end_year', INT_LEN, 'n', array('EXIST_CHECK','NUM_CHECK', 'MAX_LENGTH_CHECK'));
+        $objFormParam->addParam('表示終了日(月)', 'end_month', INT_LEN, 'n', array('EXIST_CHECK','NUM_CHECK', 'MAX_LENGTH_CHECK'));
+        $objFormParam->addParam('表示終了日(日)', 'end_day', INT_LEN, 'n', array('EXIST_CHECK','NUM_CHECK', 'MAX_LENGTH_CHECK'));
         $objFormParam->addParam('タイトル', 'news_title', MTEXT_LEN, 'KVa', array('EXIST_CHECK','MAX_LENGTH_CHECK','SPTAB_CHECK'));
         $objFormParam->addParam('URL', 'news_url', URL_LEN, 'KVa', array('MAX_LENGTH_CHECK'));
         $objFormParam->addParam('本文', 'news_comment', LTEXT_LEN, 'KVa', array('MAX_LENGTH_CHECK'));
