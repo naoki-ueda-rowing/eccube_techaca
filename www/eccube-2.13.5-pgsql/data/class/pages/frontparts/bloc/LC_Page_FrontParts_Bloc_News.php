@@ -114,6 +114,8 @@ class LC_Page_FrontParts_Bloc_News extends LC_Page_FrontParts_Bloc_Ex
         $objFormParam->addParam('新着ID', 'news_id', INT_LEN, 'n', array('NUM_CHECK', 'MAX_LENGTH_CHECK'), '', false);
     }
 
+
+
     /**
      * 新着情報を取得する.
      *

@@ -169,7 +169,7 @@ class SC_Query
      * @param  integer    $fetchmode   使用するフェッチモード。デフォルトは MDB2_FETCHMODE_ASSOC。
      * @return array|null
      */
-    public function select($cols, $from = '', $where = '', $arrWhereVal = array(), $fetchmode = MDB2_FETCHMODE_ASSOC)
+    public function select($cols, $from = '', $where = '' , $arrWhereVal = array(), $fetchmode = MDB2_FETCHMODE_ASSOC)
     {
         $sqlse = $this->getSql($cols, $from, $where, $arrWhereVal);
 

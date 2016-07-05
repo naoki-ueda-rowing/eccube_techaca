@@ -52,6 +52,9 @@ class SC_Helper_News
         return $arrRet[0];
     }
 
+    
+
+
     /**
      * ニュース一覧の取得.
      *
@@ -66,9 +69,9 @@ class SC_Helper_News
         $col = '*, cast(news_date as date) as cast_news_date,
                  cast(news_start_date as date) as cast_news_start_date,
                  cast(news_end_date as date) as cast_news_end_date';
-        $where = '';
+        $where = '(current_date > news_start_date AND current_date < news_end_date)';
         if (!$has_deleted) {
-            $where .= 'del_flg = 0';
+            $where .= 'AND del_flg = 0';
         }
         $table = 'dtb_news';
         $objQuery->setOrder('rank DESC');
@@ -83,6 +86,8 @@ class SC_Helper_News
 
         return $arrRet;
     }
+
+
 
     /**
      * ニュースの登録.
@@ -181,4 +186,6 @@ class SC_Helper_News
 
         return $objDb->countRecords('dtb_news', $where);
     }
+
+
 }
