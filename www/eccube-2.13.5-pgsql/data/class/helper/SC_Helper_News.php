@@ -52,7 +52,7 @@ class SC_Helper_News
         return $arrRet[0];
     }
 
-    
+
 
 
     /**
@@ -64,6 +64,39 @@ class SC_Helper_News
      * @return array
      */
     public function getList($dispNumber = 0, $pageNumber = 0, $has_deleted = false)
+    {
+        $objQuery =& SC_Query_Ex::getSingletonInstance();
+        $col = '*, cast(news_date as date) as cast_news_date,
+                 cast(news_start_date as date) as cast_news_start_date,
+                 cast(news_end_date as date) as cast_news_end_date';
+        $where = '';
+        if (!$has_deleted) {
+            $where .= 'del_flg = 0';
+        }
+        $table = 'dtb_news';
+        $objQuery->setOrder('rank DESC');
+        if ($dispNumber > 0) {
+            if ($pageNumber > 0) {
+                $objQuery->setLimitOffset($dispNumber, (($pageNumber - 1) * $dispNumber));
+            } else {
+                $objQuery->setLimit($dispNumber);
+            }
+        }
+        $arrRet = $objQuery->select($col, $table, $where);
+
+        return $arrRet;
+    }
+
+
+    /**
+     * フロント画面用に、表示開始時刻<現在の時刻<表示終了時刻であるニュース一覧の取得.
+     *
+     * @param  integer $dispNumber  表示件数
+     * @param  integer $pageNumber  ページ番号
+     * @param  boolean $has_deleted 削除されたニュースも含む場合 true; 初期値 false
+     * @return array
+     */
+    public function getConList($dispNumber = 0, $pageNumber = 0, $has_deleted = false)
     {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         $col = '*, cast(news_date as date) as cast_news_date,
