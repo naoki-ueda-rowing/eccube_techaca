@@ -90,6 +90,7 @@ class SC_Helper_News
 
     /**
      * フロント画面用に、表示開始時刻<現在の時刻<表示終了時刻であるニュース一覧の取得.
+     * castした内容をasを使って別のカラム名で取得
      *
      * @param  integer $dispNumber  表示件数
      * @param  integer $pageNumber  ページ番号
