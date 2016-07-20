@@ -94,7 +94,7 @@ class LC_Page_FrontParts_Bloc_News extends LC_Page_FrontParts_Bloc_Ex
                 }
                 break;
             default:
-                $this->arrNews = $objNews->getConList();
+                $this->arrNews = $objNews->get_current_News_List();
                 $this->newsCount = $objNews->getCount();
                 break;
         }
@@ -123,7 +123,7 @@ class LC_Page_FrontParts_Bloc_News extends LC_Page_FrontParts_Bloc_Ex
      */
     public function lfGetNews($dispNumber, $pageNo, SC_Helper_News_Ex $objNews)
     {
-        $arrNewsList = $objNews->getConList($dispNumber, $pageNo);
+        $arrNewsList = $objNews->get_current_News_List($dispNumber, $pageNo);
 
         // モバイルサイトのセッション保持 (#797)
         if (SC_Display_Ex::detectDevice() == DEVICE_TYPE_MOBILE) {
