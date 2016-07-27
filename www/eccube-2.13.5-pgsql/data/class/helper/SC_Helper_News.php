@@ -41,7 +41,6 @@ class SC_Helper_News
     {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         $col = '*, cast(news_date as date) as cast_news_date,
-                  cast(news_start_date as date) as cast_news_start_date,
                  cast(news_end_date as date) as cast_news_end_date';
         $where = 'news_id = ?';
         if (!$has_deleted) {
@@ -67,7 +66,6 @@ class SC_Helper_News
     {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
         $col = '*, cast(news_date as date) as cast_news_date,
-                 cast(news_start_date as date) as cast_news_start_date,
                  cast(news_end_date as date) as cast_news_end_date';
         $where = '';
         if (!$has_deleted) {
@@ -97,13 +95,11 @@ class SC_Helper_News
      * @param  boolean $has_deleted 削除されたニュースも含む場合 true; 初期値 false
      * @return array
      */
-    public function getConList($dispNumber = 0, $pageNumber = 0, $has_deleted = false)
+    public function getCurrentNewsList($dispNumber = 0, $pageNumber = 0, $has_deleted = false)
     {
         $objQuery =& SC_Query_Ex::getSingletonInstance();
-        $col = '*, cast(news_date as date) as cast_news_date,
-                 cast(news_start_date as date) as cast_news_start_date,
-                 cast(news_end_date as date) as cast_news_end_date';
-        $where = '(current_date > news_start_date AND current_date < news_end_date)';
+        $col = '*, cast(news_date as date) as cast_news_date';
+        $where = '(current_date >= news_date AND current_date <= news_end_date)';
         if (!$has_deleted) {
             $where .= 'AND del_flg = 0';
         }
